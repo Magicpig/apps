@@ -16,19 +16,17 @@ data:
 
     [agent]
     port = 1237
-    rpc = "https://sepolia.optimism.io"
-    priv = "0xab1144211deab0fca23ce83b87b66368fddda770783a61bbdb738ee46e9eef38"
-    contractAddr = "0xe69257d83b2c50b2d7496348d053d76c744753e4"
+    rpc = "https://mainnet.optimism.io"
+    priv = ""
+    contractAddr = "0x3179CE5fAB68C0286Da85f3d61BcE7116815e799"
 
     [connector]
     port = 1234
     callbackUrl = "http://connector-service:1234"
 
     [chainIdConvert]
-    9006 = "97"
-    966 = "80001"
-    60 = "11155111"
-    9000 = "43113"
+    9006 = "56"
+    614 = "10"
     501 = "501"
 
 
@@ -41,26 +39,18 @@ data:
     historyPath = "/support/history"
 
     [[chainClients]]
-    url = "http://otmoic-chain-client-evm-eth-server-60:9100"
-    initBlockHeight = 5579765
-    chainId = "60" # eth
-    nativeChainId = "11155111" # bsc testnet
+    url = "http://otmoic-chain-client-evm-opt-server-614:9100"
+    initBlockHeight = 38936935
+    chainId = "614" # opt
+    nativeChainId = "10" # opt testnet
     registerPath = "/support/register"
     historyPath = "/support/history"
 
     [[chainClients]]
-    url = "http://otmoic-chain-client-evm-avax-server-9000:9100"
-    initBlockHeight = 31330505
-    chainId = "9000" # avax
-    nativeChainId = "43113" # bsc testnet
-    registerPath = "/support/register"
-    historyPath = "/support/history"
-
-    [[chainClients]]
-    url = "http://otmoic-chain-client-evm-polygon-server-966:9100"
-    initBlockHeight = 47592195
-    chainId = "966" # polygon
-    nativeChainId = "80001" # bsc testnet
+    url = "http://otmoic-chain-client-solana-solana-server-501:9100"
+    initBlockHeight = 274249504
+    chainId = "501" # solana
+    nativeChainId = "501" # solana mainnet
     registerPath = "/support/register"
     historyPath = "/support/history"
 
@@ -88,7 +78,7 @@ spec:
     spec:
       containers:
         - name: connector
-          image: otmoic/reputation-service:latest
+          image: otmoic/reputation-suite:d0f6fe73
           env:
           - name: DBUSER
             value: "postgres"
@@ -160,7 +150,7 @@ spec:
     spec:
       containers:
         - name: arbiter
-          image: otmoic/reputation-service:latest
+          image: otmoic/reputation-suite:d0f6fe73
           env:
           - name: DBUSER
             value: "postgres"
@@ -231,7 +221,7 @@ spec:
     spec:
       containers:
         - name: points
-          image: otmoic/reputation-service:latest
+          image: otmoic/reputation-suite:d0f6fe73
           env:
           - name: DBUSER
             value: "postgres"

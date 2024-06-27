@@ -75,7 +75,7 @@ spec:
           - name: SERVER_NAME
             value: relay-fep-ws-server-1
           - name: CORS_ORIGIN
-            value: "http://localhost:9099,https://otmoic-web-app.edge-dev.xyz/,https://mainnet-otmoic-web-app.edge-dev.xyz/"
+            value: "http://localhost:9099"
           - name: URL_COOKIE_MATH
             value: "http://relay-utils-service:9000/utils/wscookie"
           - name: COOKIE_DOMAIN

@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-xrp-144
-        image: otmoic/otmoic-chainclient-xrp:latest
+        image: otmoic/chainclient-xrp:latest
         ports:
           - containerPort: 9100
         resources:

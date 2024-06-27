@@ -1,3 +1,22 @@
+{{- $ha_pgpool_secret := (lookup "v1" "Secret" .Release.Namespace "otmoic-relay-db-postgresql-postgresql-ha-pgpool") -}}
+{{- $admin_password := "" -}}
+{{ if $ha_pgpool_secret -}}
+{{- $admin_password = (index $ha_pgpool_secret "data" "admin-password") -}}
+{{ else -}}
+{{- $admin_password = randAlphaNum 16 | b64enc}}
+{{- end -}}
+
+{{- $ha_postgresql_secret := (lookup "v1" "Secret" .Release.Namespace "otmoic-relay-db-postgresql-postgresql-ha-postgresql") -}}
+{{- $postgresql_secret_password := "" -}}
+{{- $postgresql_secret_repmgr_password := "" -}}
+{{ if $ha_postgresql_secret -}}
+{{- $postgresql_secret_password = (index $ha_postgresql_secret "data" "password") -}}
+{{- $postgresql_secret_repmgr_password = (index $ha_postgresql_secret "data" "repmgr-password") -}}
+{{ else -}}
+{{- $postgresql_secret_password = randAlphaNum 16 | b64enc}}
+{{- $postgresql_secret_repmgr_password = randAlphaNum 16 | b64enc}}
+{{- end -}}
+---
 # Source: postgresql-ha/templates/pgpool/secrets.yaml
 apiVersion: v1
 kind: Secret
@@ -12,7 +31,7 @@ metadata:
     app.kubernetes.io/component: pgpool
 type: Opaque
 data:
-  admin-password: {{ randAlphaNum 16 | b64enc }}
+  admin-password: {{ $admin_password }}
 ---
 # Source: postgresql-ha/templates/postgresql/secrets.yaml
 apiVersion: v1
@@ -28,8 +47,8 @@ metadata:
     app.kubernetes.io/component: postgresql
 type: Opaque
 data:
-  password: {{ randAlphaNum 16 | b64enc }}
-  repmgr-password: {{ randAlphaNum 16 | b64enc }}
+  password: {{ $postgresql_secret_password }}
+  repmgr-password: {{ $postgresql_secret_repmgr_password }}
 ---
 # Source: postgresql-ha/templates/postgresql/hooks-scripts-configmap.yaml
 apiVersion: v1
@@ -281,9 +300,9 @@ spec:
             - name: PGPOOL_RESERVED_CONNECTIONS
               value: '1'
             - name: PGPOOL_MAX_POOL
-              value: "10"
-            - name: PGPOOL_CHILD_MAX_CONNECTIONS
               value: "100"
+            - name: PGPOOL_CHILD_MAX_CONNECTIONS
+              value: "1000"
             - name: PGPOOL_CHILD_LIFE_TIME
               value: "300"
             - name: PGPOOL_CLIENT_IDLE_LIMIT

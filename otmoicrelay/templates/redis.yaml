@@ -1,3 +1,11 @@
+{{- $relay_redis_secret := (lookup "v1" "Secret" .Release.Namespace "otmoic-relay-db-redis") -}}
+{{- $redis_secret_redis_password := "" -}}
+{{ if $relay_redis_secret -}}
+{{- $redis_secret_redis_password = (index $relay_redis_secret "data" "redis-password") -}}
+{{ else -}}
+{{- $redis_secret_redis_password = randAlphaNum 16 | b64enc}}
+{{- end -}}
+---
 # Source: redis/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -23,7 +31,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
 type: Opaque
 data:
-  redis-password: {{ randAlphaNum 16 | b64enc }}
+  redis-password: {{ $redis_secret_redis_password }}
 ---
 # Source: redis/templates/configmap.yaml
 apiVersion: v1

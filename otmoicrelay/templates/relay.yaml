@@ -18,7 +18,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: otmoicrelay
+  name: otmoicrelaymainnet
   namespace: {{ .Release.Namespace }}
   labels:
     app: relay
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: relay
-        image: otmoic/relay:c8f33138
+        image: otmoic/relay:7eb64004
         ports:
           - containerPort: 9102
         resources:
