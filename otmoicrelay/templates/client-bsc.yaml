@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-evm-bsc-9006
-        image: otmoic/chainclient-evm:ee42fccf
+        image: otmoic/chainclient-evm:Test-V2.1.4
         ports:
           - containerPort: 9100
         resources:
@@ -42,8 +42,8 @@ spec:
             cpu: 1m
             memory: 64Mi
           limits:
-            cpu: 100m
-            memory: 1024Mi
+            cpu: 300m
+            memory: 800Mi
         env:
           - name: REDIS_PASSWORD
             valueFrom:
@@ -57,7 +57,7 @@ spec:
           - name: REDIS_PORT
             value: "6379"
           - name: RPC_URL
-            value: "https://bsc-dataseed.bnbchain.org"
+            value: "https://binance.llamarpc.com"
           - name: CONTRACT_ADDRESS
             value: "0xcb24e8aEDB15981F4C088214722D8E3809e817eB"
           - name: SYSTEM_CHAIN_ID

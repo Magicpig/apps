@@ -34,7 +34,7 @@ data:
     url = "http://otmoic-chain-client-evm-bsc-server-9006:9100"
     initBlockHeight = 38936935
     chainId = "9006" # bsc
-    nativeChainId = "97" # bsc testnet
+    nativeChainId = "56" # bsc testnet
     registerPath = "/support/register"
     historyPath = "/support/history"
 
@@ -78,7 +78,7 @@ spec:
     spec:
       containers:
         - name: connector
-          image: otmoic/reputation-suite:d0f6fe73
+          image: otmoic/reputation-suite:Test-V2.1.2
           env:
           - name: DBUSER
             value: "postgres"
