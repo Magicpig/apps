@@ -67,7 +67,7 @@ spec:
           - name: CHAIN_ID
             value: "501"
           - name: START_BLOCK
-            value: "306012670"
+            value: "275591476"
           - name: SERVER_URL_TRANSFER_OUT
             value: "http://otmoicrelay-server:9102/relay/chain_client/on_transfer_out"
           - name: SERVER_URL_TRANSFER_IN

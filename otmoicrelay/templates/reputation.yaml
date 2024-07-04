@@ -32,7 +32,7 @@ data:
 
     [[chainClients]]
     url = "http://otmoic-chain-client-evm-bsc-server-9006:9100"
-    initBlockHeight = 38936935
+    initBlockHeight = 40172800
     chainId = "9006" # bsc
     nativeChainId = "56" # bsc testnet
     registerPath = "/support/register"
@@ -40,7 +40,7 @@ data:
 
     [[chainClients]]
     url = "http://otmoic-chain-client-evm-opt-server-614:9100"
-    initBlockHeight = 38936935
+    initBlockHeight = 122239818
     chainId = "614" # opt
     nativeChainId = "10" # opt testnet
     registerPath = "/support/register"
@@ -48,7 +48,7 @@ data:
 
     [[chainClients]]
     url = "http://otmoic-chain-client-solana-solana-server-501:9100"
-    initBlockHeight = 274249504
+    initBlockHeight = 275591327
     chainId = "501" # solana
     nativeChainId = "501" # solana mainnet
     registerPath = "/support/register"
