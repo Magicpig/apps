@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-near-397
-        image: otmoic/otmoic-chainclient-near:latest
+        image: otmoic/chainclient-near:Test-V2.1.2
         resources:
           requests:
             cpu: 1m
