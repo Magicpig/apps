@@ -1,41 +1,41 @@
-# Service definition for otmoic-chain-client-solana-solana-server
+# Service definition for otmoic-chain-client-solana-solana-history-server
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: otmoic-chain-client-solana-solana-server-501
+  name: otmoic-chain-client-solana-solana-history-server-501
   namespace: {{ .Release.Namespace }}
 spec:
   selector:
-    app: otmoic-chain-client-solana-solana-501
+    app: otmoic-chain-client-solana-solana-history-501
   type: ClusterIP
   ports:
     - protocol: TCP
-      name: otmoic-chain-client-solana-solana-api-501
+      name: otmoic-chain-client-solana-solana-history-api-501
       port: 9100
       targetPort: 9100
 
-# Deployment definition for otmoic-chain-client-solana-solana-501
+# Deployment definition for otmoic-chain-client-solana-solana-history-501
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: otmoic-chain-client-solana-solana-501
+  name: otmoic-chain-client-solana-solana-history-501
   namespace: {{ .Release.Namespace }}
   labels:
-    app: otmoic-chain-client-solana-solana-501
+    app: otmoic-chain-client-solana-solana-history-501
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: otmoic-chain-client-solana-solana-501
+      app: otmoic-chain-client-solana-solana-history-501
   template:
     metadata:
       labels:
-        app: otmoic-chain-client-solana-solana-501
+        app: otmoic-chain-client-solana-solana-history-501
     spec:
       containers:
-      - name: otmoic-chain-client-solana-solana-501
+      - name: otmoic-chain-client-solana-solana-history-501
         image: otmoic/chainclient-solana:Test-V2.1.2.2
         ports:
           - containerPort: 9100
@@ -67,17 +67,9 @@ spec:
           - name: CHAIN_ID
             value: "501"
           - name: START_BLOCK
-            value: "275591476"
-          - name: SERVER_URL_TRANSFER_OUT
-            value: "http://otmoicrelay-server:9102/relay/chain_client/on_transfer_out"
-          - name: SERVER_URL_TRANSFER_IN
-            value: "http://otmoicrelay-server:9102/relay/chain_client/on_transfer_in"
-          - name: SERVER_URL_CONFIRM
-            value: "http://otmoicrelay-server:9102/relay/chain_client/on_confirm"
-          - name: SERVER_URL_REFUNDED
-            value: "http://otmoicrelay-server:9102/relay/chain_client/on_refunded"
+            value: "276709460"
           - name: AUTO_START
-            value: 'true'
+            value: 'false'
           - name: RELAY_WALLET_ADDRESS
             value: 'GSzZDZ1P6YjEBgbSfu4Quu4xwsKAAwVGcpfRNG1erc2n'
           - name: RELAY_WALLET_PRIVATE_KEY
