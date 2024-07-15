@@ -1,10 +1,10 @@
 terminusManifest.version: 0.6.0
 metadata:
-  name: otmoicrelaymainnet
+  name: otmoicrelay
   description: Otmoic Relay
   icon: https://file.bttcdn.com/appstore/otmoiclpnode/icon.png
-  appid: otmoicrelaymainnet
-  version: 0.0.11
+  appid: otmoicrelay
+  version: 0.0.12
   title: Otmoic-Relay
   categories:
   - Blockchain
@@ -12,7 +12,7 @@ permission:
   appData: true
   appCache: true
 spec:
-  versionName: 0.0.11
+  versionName: 0.0.12
   fullDescription: Otmoic Relay
   developer: ByteTrade
   submitter: ByteTrade
