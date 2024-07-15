@@ -47,8 +47,8 @@ spec:
             cpu: 1m
             memory: 1Mi
           limits:
-            cpu: 50m
-            memory: 16Mi
+            cpu: 200m
+            memory: 512Mi
         env:
           - name: POSTGRES_USERNAME
             value: "postgres"
