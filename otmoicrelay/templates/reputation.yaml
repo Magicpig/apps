@@ -51,7 +51,7 @@ data:
     [[chainClients]]
     url = "http://otmoic-chain-client-solana-solana-server-501:9100"
     historyUrl = "otmoic-chain-client-solana-solana-history-server-501:9100"
-    initBlockHeight = 275591327
+    initBlockHeight = 277643113
     chainId = "501" # solana
     nativeChainId = "501" # solana mainnet
     registerPath = "/support/register"
@@ -81,7 +81,7 @@ spec:
     spec:
       containers:
         - name: connector
-          image: otmoic/reputation-suite:782e61ba
+          image: otmoic/reputation-suite:V2.1.2
           env:
           - name: DBUSER
             value: "postgres"
@@ -153,7 +153,7 @@ spec:
     spec:
       containers:
         - name: arbiter
-          image: otmoic/reputation-suite:d0f6fe73
+          image: otmoic/reputation-suite:V2.1.2
           env:
           - name: DBUSER
             value: "postgres"
@@ -224,7 +224,7 @@ spec:
     spec:
       containers:
         - name: points
-          image: otmoic/reputation-suite:d0f6fe73
+          image: otmoic/reputation-suite:V2.1.2
           env:
           - name: DBUSER
             value: "postgres"

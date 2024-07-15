@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-solana-solana-501
-        image: otmoic/chainclient-solana:Test-V2.1.2.2
+        image: otmoic/chainclient-solana:V2.1.2
         ports:
           - containerPort: 9100
         resources:
@@ -45,7 +45,7 @@ spec:
             memory: 64Mi
           limits:
             cpu: 1
-            memory: 1000Mi
+            memory: 800Mi
         env:
           - name: REDIS_PASSWORD
             valueFrom:
@@ -67,7 +67,7 @@ spec:
           - name: CHAIN_ID
             value: "501"
           - name: START_BLOCK
-            value: "275591476"
+            value: "277639413"
           - name: SERVER_URL_TRANSFER_OUT
             value: "http://otmoicrelay-server:9102/relay/chain_client/on_transfer_out"
           - name: SERVER_URL_TRANSFER_IN
@@ -87,6 +87,10 @@ spec:
           - name: START_TOP_HEIGHT
             value: 'true'
           - name: FEE_RECEPIENT
-            value: 'ETthL4UxUKmKmARCwawHZ2feEQuvfc5TorrKvL5MkFs'
+            value: 'Gexuvyazbb48d5U6voRna5ef1SLPRUNLiwavqEx8otgy'
           - name : CONCURRENCY
-            value: '10'
+            value: '3'
+          - name: 'LOAD_RPC_URLS'
+            value: 'https://twilight-newest-grass.solana-mainnet.quiknode.pro/fd6545d755e5385bf0f1458cbbcadf3352018720/|70,https://solana-mainnet.g.alchemy.com/v2/0nfhMHYlkNm3BrBpJDiIuMoEab-qZbF8|30'
+          - name: 'FETCHERS_SIZE'
+            value: '2'

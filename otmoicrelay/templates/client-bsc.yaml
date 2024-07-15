@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-evm-bsc-9006
-        image: otmoic/chainclient-evm:Test-V2.1.4
+        image: otmoic/chainclient-evm:V2.1.4
         ports:
           - containerPort: 9100
         resources:
@@ -57,7 +57,7 @@ spec:
           - name: REDIS_PORT
             value: "6379"
           - name: RPC_URL
-            value: "https://binance.llamarpc.com"
+            value: "https://rpc.ankr.com/bsc/49b8a4afdcbe167875a813136c596efc93dcd3b47c5d87a6039004d63d6a7a83"
           - name: CONTRACT_ADDRESS
             value: "0xcb24e8aEDB15981F4C088214722D8E3809e817eB"
           - name: SYSTEM_CHAIN_ID
@@ -65,7 +65,7 @@ spec:
           - name: CHAIN_ID
             value: "56"
           - name: START_BLOCK
-            value: "40172800"
+            value: "40487212"
           - name: SERVER_URL_TRANSFER_OUT
             value: "http://otmoicrelay-server:9102/relay/chain_client/on_transfer_out"
           - name: SERVER_URL_TRANSFER_IN

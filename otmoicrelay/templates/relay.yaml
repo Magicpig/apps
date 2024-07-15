@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: relay
-        image: otmoic/relay:Test-V2.1.2
+        image: otmoic/relay:V2.1.2
         ports:
           - containerPort: 9102
         resources:
@@ -42,7 +42,7 @@ spec:
             cpu: 1m
             memory: 256Mi
           limits:
-            cpu: 200m
+            cpu: 300m
             memory: 512Mi
         env:
           - name: POSTGRESQL_HOST
