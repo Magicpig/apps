@@ -81,7 +81,7 @@ spec:
           - name: FEE_RECEPIENT
             value: 'Gexuvyazbb48d5U6voRna5ef1SLPRUNLiwavqEx8otgy'
           - name: 'LOAD_RPC_URLS'
-            value: 'https://twilight-newest-grass.solana-mainnet.quiknode.pro/fd6545d755e5385bf0f1458cbbcadf3352018720/|70,https://solana-mainnet.g.alchemy.com/v2/0nfhMHYlkNm3BrBpJDiIuMoEab-qZbF8|30'
+            value: ' https://twilight-newest-grass.solana-mainnet.quiknode.pro/fd6545d755e5385bf0f1458cbbcadf3352018720/|40,https://solana-mainnet.g.alchemy.com/v2/0nfhMHYlkNm3BrBpJDiIuMoEab-qZbF8|30,https://solana-mainnet.core.chainstack.com/094c8301adcda64c9101bd730a3dcbc6|30'
           - name : CONCURRENCY
             value: '3'
           - name: 'FETCHERS_SIZE'
