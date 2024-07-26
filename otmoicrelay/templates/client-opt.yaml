@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-evm-opt-614
-        image: otmoic/chainclient-evm:V2.1.4
+        image: otmoic/chainclient-evm:V2.1.6
         ports:
           - containerPort: 9100
         resources:
