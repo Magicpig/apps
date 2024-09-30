@@ -33,14 +33,14 @@ spec:
     spec:
       containers:
         - name: chain-client-evm-bsc-9006
-          image: otmoic/chainclient-evm:V2.2.2.8
+          image: otmoic/chainclient-evm:V2.2.2.9
           imagePullPolicy: Always
           resources:
             requests:
               cpu: 1m
               memory: 64Mi
             limits:
-              cpu: 300m
+              cpu: 500m
               memory: 800Mi
           ports:
             - containerPort: 9100
