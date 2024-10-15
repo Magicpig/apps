@@ -77,9 +77,9 @@ spec:
           - name: AUTO_START
             value: 'true'
           - name: RELAY_WALLET_ADDRESS
-            value: '0x823f07e71E0Af3d31e4D9dBFe020c0A50197BDdF'
+            value: '0x329A6A613367895510eC2213e0E3ca778487515B'
           - name: RELAY_WALLET_PRIVATE_KEY
-            value: 5eca3249bd69d7cc75446e3a70b47966c1f5119dc4cbf482e0d78b0848c065be
+            value: 3be61adfa271db20ddad2a40a15ff4cd992a58f9af4671e316889b76c78e31d4
           - name: RELAY_WALLET
             value: 'true'
           - name: START_TOP_HEIGHT
