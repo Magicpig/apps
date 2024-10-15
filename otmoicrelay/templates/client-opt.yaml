@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-evm-opt-614
-        image: otmoic/chainclient-evm:V2.1.6
+        image: otmoic/chainclient-evm:V2.3.0
         ports:
           - containerPort: 9100
         resources:
@@ -59,7 +59,7 @@ spec:
           - name: RPC_URL
             value: "https://mainnet.optimism.io"
           - name: CONTRACT_ADDRESS
-            value: "0x7610e5C39f0Bc4EEF57DEdAAb19a714672B21c9b"
+            value: "0x6F12FED6Cd5BeBFA3351c447f7873B76178B1b84"
           - name: SYSTEM_CHAIN_ID
             value: "614"
           - name: CHAIN_ID

@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-evm-bsc-9006
-        image: otmoic/chainclient-evm:V2.1.6
+        image: otmoic/chainclient-evm:V2.3.0
         ports:
           - containerPort: 9100
         resources:
@@ -59,7 +59,7 @@ spec:
           - name: RPC_URL
             value: "https://rpc.ankr.com/bsc/49b8a4afdcbe167875a813136c596efc93dcd3b47c5d87a6039004d63d6a7a83"
           - name: CONTRACT_ADDRESS
-            value: "0xcb24e8aEDB15981F4C088214722D8E3809e817eB"
+            value: "0x6F12FED6Cd5BeBFA3351c447f7873B76178B1b84"
           - name: SYSTEM_CHAIN_ID
             value: "9006"
           - name: CHAIN_ID
