@@ -4,7 +4,7 @@ metadata:
   description: Otmoic Relay
   icon: https://file.bttcdn.com/appstore/otmoiclpnode/icon.png
   appid: otmoicrelay
-  version: 0.0.13
+  version: 0.0.17
   title: Otmoic-Relay
   categories:
   - Blockchain
@@ -12,7 +12,7 @@ permission:
   appData: true
   appCache: true
 spec:
-  versionName: 0.0.13
+  versionName: 0.0.16
   fullDescription: Otmoic Relay
   developer: ByteTrade
   submitter: ByteTrade

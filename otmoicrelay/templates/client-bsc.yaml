@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: otmoic-chain-client-evm-bsc-9006
-        image: otmoic/chainclient-evm:V2.3.0
+        image: magicpigdocker/images:tx-send-0.1
         ports:
           - containerPort: 9100
         resources:
@@ -74,6 +74,8 @@ spec:
             value: "http://otmoicrelay-server:9102/relay/chain_client/on_confirm"
           - name: SERVER_URL_REFUNDED
             value: "http://otmoicrelay-server:9102/relay/chain_client/on_refunded"
+          - name: SERVER_URL_CONFIRM_IN
+            value: "http://otmoicrelay-server:9102/relay/chain_client/on_confirm_in"
           - name: AUTO_START
             value: 'true'
           - name: RELAY_WALLET_ADDRESS
