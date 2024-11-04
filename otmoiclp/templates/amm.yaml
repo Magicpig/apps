@@ -33,7 +33,7 @@ spec:
             defaultMode: 420
       containers:
         - name: amm-amm-01
-          image: otmoic/lpnode-amm:V2.3.0
+          image: otmoic/lpnode-amm:V2.3.3
           imagePullPolicy: Always
           resources:
             requests:
