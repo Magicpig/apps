@@ -1,0 +1,43 @@
+{
+    "editor.fontSize": 13,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.letterSpacing": 0.5,
+    "editor.lineHeight": 1.5,
+    "workbench.tree.indent": 20,
+    "workbench.tree.renderIndentGuides": "always",
+    "editor.renderLineHighlight": "all",
+    "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.indentation": true,
+  
+    // 迷你地图增强设置
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.scale": 2,             // 增加缩放比例，使内容更大
+    "editor.minimap.maxColumn": 120,       // 增加宽度
+    "editor.minimap.size": "fit",          // 适应模式
+    "editor.minimap.side": "right",        // 位置靠右
+  
+    "editor.rulers": [80, 120],
+    
+    "editor.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorBlinking": "smooth",
+    
+    "editor.foldingHighlight": true,
+    "editor.showFoldingControls": "always",
+    
+    "editor.semanticHighlighting.enabled": true,
+    "editor.semanticTokenColorCustomizations": {
+      "enabled": true
+    },
+    
+    "outline.icons": true,
+    "outline.problems.enabled": true,
+    "outline.problems.badges": true,
+    "outline.problems.colors": true,
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.icons": true
+  }

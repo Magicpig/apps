@@ -1,0 +1,160 @@
+# Service configuration
+apiVersion: v1
+kind: Service
+metadata:
+  name: chain-client-evm-op-server-614
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: chain-client-evm-op-614
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      name: nginx-proxy-port
+      port: 9100
+      targetPort: 80
+---
+# Multi-container deployment with inline nginx config
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chain-client-evm-op-614
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: chain-client-evm-op-614
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chain-client-evm-op-614
+  template:
+    metadata:
+      labels:
+        app: chain-client-evm-op-614
+    spec:
+      containers:
+        # Nginx proxy container
+        - name: nginx-proxy
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+          resources:
+            requests:
+              cpu: 100m
+              memory: 56Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+        
+        # Message producer container
+        - name: message-producer
+          image: docker.io/magicpigdocker/images:chainclient-25-0.1
+          imagePullPolicy: Always
+          command: ["ts-node"]
+          args: ["src/message-producer/index.ts"]
+          ports:
+            - containerPort: 3001
+          resources:
+            requests:
+              cpu: 1m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 800Mi
+
+        # Monitor container
+        - name: monitor
+          image: docker.io/magicpigdocker/images:chainclient-25-0.1
+          imagePullPolicy: Always
+          command: ["ts-node"]
+          args: ["src/monitor/index.ts"]
+          ports:
+            - containerPort: 3002
+          resources:
+            requests:
+              cpu: 1m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 800Mi
+
+        # Public service container
+        - name: public-service
+          image: docker.io/magicpigdocker/images:chainclient-25-0.1
+          imagePullPolicy: Always
+          command: ["ts-node"]
+          args: ["src/public-service/index.ts"]
+          ports:
+            - containerPort: 3003
+          resources:
+            requests:
+              cpu: 1m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 800Mi
+
+        # Sender container
+        - name: sender
+          image: docker.io/magicpigdocker/images:chainclient-25-0.1
+          imagePullPolicy: Always
+          command: ["ts-node"]
+          args: ["src/sender/index.ts"]
+          ports:
+            - containerPort: 3004
+          resources:
+            requests:
+              cpu: 1m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 800Mi
+
+      # Volume and config definition directly in pod spec
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: chain-client-evm-op-server-614-nginx-conf
+---
+# Inline ConfigMap definition
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chain-client-evm-op-server-614-nginx-conf
+  namespace: {{ .Release.Namespace }}
+data:
+  default.conf: |
+    server {
+        listen 80;
+
+        # Public service API
+        location / {
+            proxy_pass http://localhost:3003;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+
+        # Message producer endpoints
+        location /producer/ {
+            proxy_pass http://localhost:3001/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+
+        # Monitor endpoints
+        location /monitor/ {
+            proxy_pass http://localhost:3002/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+
+        # Sender endpoints
+        location /sender/ {
+            proxy_pass http://localhost:3004/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+    }

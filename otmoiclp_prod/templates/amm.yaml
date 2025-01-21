@@ -33,7 +33,7 @@ spec:
             defaultMode: 420
       containers:
         - name: amm-amm-01
-          image: docker.io/magicpigdocker/images:amm-100  # Modified image
+          image: docker.io/magicpigdocker/images:lpnode-amm-25-0.1
           imagePullPolicy: Always
           resources:
             requests:

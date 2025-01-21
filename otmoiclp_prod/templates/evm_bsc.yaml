@@ -35,7 +35,7 @@ spec:
       containers:        
         # Message producer container
         - name: message-producer
-          image: docker.io/magicpigdocker/images:chainclient-101
+          image: docker.io/magicpigdocker/images:t-0.59
           imagePullPolicy: Always
           command: ["ts-node"]
           args: ["src/message-producer/index.ts"]
@@ -50,10 +50,8 @@ spec:
               value: "{{ .Values.redis.port }}"
             - name: REDIS_DB_NUMBER 
               value: "0"
-            - name: STATUS_KEY
-              value: "chain-client-status-report-bsc"
             - name: CHAIN_ID
-              value: "97"
+              value: "56"  
             - name: MESSAGE_PRODUCER_PORT
               value: "3001"
             - name: MONGODB_HOST
@@ -78,7 +76,7 @@ spec:
 
         # Monitor container
         - name: monitor
-          image: docker.io/magicpigdocker/images:chainclient-101
+          image: docker.io/magicpigdocker/images:t-0.59
           imagePullPolicy: Always
           command: ["ts-node"]
           args: ["src/monitor/index.ts"]
@@ -93,8 +91,6 @@ spec:
               value: "{{ .Values.redis.port }}"
             - name: REDIS_DB_NUMBER 
               value: "0"
-            - name: STATUS_KEY
-              value: "chain-client-status-report-bsc"
             - name: MONGODB_HOST
               value: {{ .Values.mongodb.host }}
             - name: MONGODB_ACCOUNT
@@ -114,7 +110,7 @@ spec:
             - name: SYSTEM_CHAIN_ID
               value: "9006"
             - name: CHAIN_ID
-              value: "97"
+              value: "56" 
             - name: OBRIDGE_CONTRACT
               value: "0x6F12FED6Cd5BeBFA3351c447f7873B76178B1b84"
             - name: OBRIDGE_CONTRACT_START_BLOCK
@@ -124,7 +120,7 @@ spec:
             - name: OBRIDGE_SWAP_CONTRACT_START_BLOCK
               value: "46562686"
             - name: RPCS
-              value: "https://data-seed-prebsc-1-s1.bnbchain.org:8545,https://bsc-testnet-rpc.publicnode.com,https://data-seed-prebsc-2-s2.bnbchain.org:8545,https://rpc.ankr.com/bsc_testnet_chapel/953f08a7c360e295f4b779fb12cb398f8e67ced7297d482dd7bafb9ebd75afa2"
+              value: "https://rpc.ankr.com/bsc/49b8a4afdcbe167875a813136c596efc93dcd3b47c5d87a6039004d63d6a7a83"
             - name: RPC_TIMEOUT
               value: "30000"
             - name: BLOCK_MARGIN
@@ -151,7 +147,7 @@ spec:
 
         # Public service container
         - name: public-service
-          image: docker.io/magicpigdocker/images:chainclient-101
+          image: docker.io/magicpigdocker/images:t-0.59
           imagePullPolicy: Always
           command: ["ts-node"]
           args: ["src/public-service/index.ts"]
@@ -166,8 +162,6 @@ spec:
               value: "{{ .Values.redis.port }}"
             - name: REDIS_DB_NUMBER 
               value: "0"
-            - name: STATUS_KEY
-              value: "chain-client-status-report-bsc"
             - name: MONGODB_HOST
               value: {{ .Values.mongodb.host }}
             - name: MONGODB_ACCOUNT
@@ -185,7 +179,7 @@ spec:
             - name: PUBLIC_SERVICE_PORT
               value: "3003"
             - name: CHAIN_ID
-              value: "97"
+              value: "56"
             - name: LOGGER_LEVEL
               value: "debug"
             - name: SYSTEM_CHAIN_ID
@@ -197,7 +191,7 @@ spec:
             - name: ADMIN_SERVICE_POLLING_INTERVAL
               value: "15000"
             - name: RPCS
-              value: "https://data-seed-prebsc-1-s1.bnbchain.org:8545,https://bsc-testnet-rpc.publicnode.com,https://data-seed-prebsc-2-s2.bnbchain.org:8545,https://rpc.ankr.com/bsc_testnet_chapel/953f08a7c360e295f4b779fb12cb398f8e67ced7297d482dd7bafb9ebd75afa2"
+              value: "https://rpc.ankr.com/bsc/49b8a4afdcbe167875a813136c596efc93dcd3b47c5d87a6039004d63d6a7a83"
             - name: RPC_TIMEOUT
               value: "30000"
             - name: RELAY_WALLET
@@ -212,7 +206,7 @@ spec:
 
         # Sender container
         - name: sender
-          image: docker.io/magicpigdocker/images:chainclient-101
+          image: docker.io/magicpigdocker/images:t-0.59
           imagePullPolicy: Always
           command: ["ts-node"]
           args: ["src/sender/index.ts"]
@@ -227,18 +221,16 @@ spec:
               value: "{{ .Values.redis.port }}"
             - name: REDIS_DB_NUMBER 
               value: "0"
-            - name: STATUS_KEY
-              value: "chain-client-status-report-bsc"
             - name: ADMIN_SERVICE_URL
               value: "http://lpnode-admin-server:18006"
             - name: ADMIN_SERVICE_POLLING_INTERVAL
               value: "15000"
             - name: CHAIN_ID
-              value: "97"
+              value: "56"  
             - name: MONITOR_NAME
               value: chain-client-evm-bsc-9006-monitor
             - name: SENDER_RPC_URL
-              value: "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
+              value: "https://rpc.ankr.com/bsc/49b8a4afdcbe167875a813136c596efc93dcd3b47c5d87a6039004d63d6a7a83"  # 修改为指定的 RPC
             - name: MONGODB_HOST
               value: {{ .Values.mongodb.host }}
             - name: MONGODB_ACCOUNT

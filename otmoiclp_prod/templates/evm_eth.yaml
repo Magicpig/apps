@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: chain-client-evm-eth-60
-          image: magicpigdocker/images:tx-send-0.1
+          image: otmoic/chainclient-evm:V2.4.4
           imagePullPolicy: Always
           resources:
             requests:
@@ -70,7 +70,7 @@ spec:
             - name: OS_SYSTEM_SERVER
               value: system-server.user-system-{{ .Values.bfl.username }}
             - name: CONTRACT_ADDRESS
-              value: "magicpigdocker/images:solana-lts-0.1" # Update with actual contract address
+              value: "0x6F12FED6Cd5BeBFA3351c447f7873B76178B1b84" # Update with actual contract address
             - name: START_BLOCK
               value: "21071432" # Update with actual start block
             - name: RPC_URL

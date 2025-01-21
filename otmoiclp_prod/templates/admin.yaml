@@ -248,7 +248,7 @@ spec:
             mountPath: /init_data
         env:
           - name: DEPLOY_ENV
-            value: 'dev'
+            value: 'prod' # prod/dev
           - name: RELAY_ACCESS_URL
             value: 'https://5b4522f4.nathanielight.myterminus.com'
           - name: REDIS_PASS
